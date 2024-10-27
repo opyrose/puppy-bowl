@@ -61,19 +61,30 @@ const renderPuppyNames = (puppyTeamOne, puppyTeamTwo) => {
     finalOneUL.append(teamOneLI);
   };
 
-
-
-
   for (let i = 0; i < teamTwo.length; i++) {
     const teamTwoLI = document.createElement(`li`)
     teamTwoLI.innerHTML = `${teamTwo[i]}`
-   
+
     const finalTwoUL = document.querySelector(`#teamTwo`)
     finalTwoUL.append(teamTwoLI);
   };
+
+  
+  
+  const singlePuppyLI = document.querySelectorAll(`li`);
+  
+  
+    
+    singlePuppyLI.forEach((puppyLI) => {
+      puppyLI.addEventListener(`click`, (event) => {
+      
+        console.log(event.target.innerHTML)
+      });
+    });
 };
 
-
+  
+ 
 
 const runFunctions = async () => {
   const puppyTeamInfo = await grabData();
@@ -82,6 +93,7 @@ const runFunctions = async () => {
   const teamTwoPlayers = puppyTeamInfo.teams[1].players
   renderPuppyNames(teamOnePlayers, teamTwoPlayers);
 
+ 
 
 };
 runFunctions();
